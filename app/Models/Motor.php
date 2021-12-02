@@ -4,27 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Jenssegers\Mongodb\Eloquent\Model;
+use App\Models\Kendaraan;
 
-class Motor extends Kendaraan
+class Mobil extends Kendaraan
 {
-    // use HasFactory;
-    private string $mesin;
-    private string $tipe_suspensi;
-    private string $tipe_transmisi;
+    use HasFactory;
+    
+    public function __construct(array $attributes=[]){
+        parent::__construct($attributes);
 
-    function __construct(string $tahun, string $warna, string $harga, string $mesin, string $tipe_suspensi, string $tipe_transmisi)
-    {
-        parent::__construct(
-            $tahun,
-            $warna,
-            $harga
-        );
-        $this->mesin = $mesin;
-        $this->tipe_suspensi = $tipe_suspensi;
-        $this->tipe_transmisi = $tipe_transmisi;
+        $this->mergeFillable(['mesin', 'tipe_suspensi'. 'tipe_transmisi']);
 
-    }
-    public function getName(){
-        return $this->name;
     }
 }

@@ -10,21 +10,12 @@ use App\Models\Mobil;
 class Kendaraan extends Model
 {
     // use HasFactory;
-    private string $tahun;
-    private string $warna;
-    private string $harga;
+    protected $connection = 'mongodb';
+    protected $collection = 'kendaraan';
 
-    function __construct(string $tahun, string $warna, string $harga)
-    {
-        $this->tahun = $tahun;
-        $this->warna = $warna;
-        $this->harga = $harga;
-        print "In BaseClass constructor\n";
-    }
-
-    public function getName(){
-        return $this->name;
-    }
+    protected $fillable =[
+        'tahun_keluar', 'warna', 'harga', 'stok', 'jumlah_terjual', 'jenis'
+    ];
 
     public function getMotors(){
         return $this->hasMany(Motor::class, 'foreign_key');

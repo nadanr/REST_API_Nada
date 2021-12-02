@@ -8,7 +8,8 @@ use App\Models\Motor;
 
 class MotorLogic 
 {
-    public function get_Mobil(){
-        
+    public function indexMotor(){
+        $motor=Motor::all();
+        return $motor;
     }
 }
