@@ -8,8 +8,15 @@ use App\Models\Motor;
 
 class MobilLogic 
 {
-    public function indexMobil(){
+    public function getMobil(){
         $mobil=Mobil::all();
         return $mobil;
+    }
+
+    public function destroy($id)
+    {
+        $mobil = Mobil::find($id);
+        $mobil->delete();
+        return "book with id " . $id . " deleted";
     }
 }
